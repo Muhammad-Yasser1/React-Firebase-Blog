@@ -8,6 +8,20 @@ body {
   text-align: left;
 }
 
+
+#nprogress .bar {
+  background: #29d !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #29d !important;
+  border-left-color: #29d !important;
+}
+
 h5 {
   font-size: 1.125rem;
 }
