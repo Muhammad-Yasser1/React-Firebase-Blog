@@ -11,7 +11,7 @@ const AppNavbar = props => {
     <nav className="AppNavbar navbar pb-0 navbar-expand bg-transparent navbar-light border-bottom-1">
       <NavLink
         style={{ display: props.editMode ? "flex" : "none" }}
-        to={{ pathname: "/create" }}
+        to={{ pathname: "/posts/create" }}
         className="createbtn"
       >
         +

@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getArticles } from "../store/actions/articlesActions";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 const Blog = props => {
   useEffect(() => {
+    NProgress.start();
     if (!props.articles.length) {
       props.getArticles();
     }
-    //eslint-disable-next-line
+    NProgress.done(); //eslint-disable-next-line
   }, [props.articles]);
 
   const { articles, editMode } = props;

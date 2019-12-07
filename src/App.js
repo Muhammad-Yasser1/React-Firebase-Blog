@@ -6,6 +6,7 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 //styles
 import "./styles/App.scss";
 // components
@@ -24,13 +25,22 @@ const App = () => {
       <main className="container-fluid px-md-5">
         <AppNavbar />
         <hr className="mt-0 mb-3" />
-        <Switch>
-          <Route path="/posts/:id/edit" component={Edit} exact />
-          <Route path="/posts/create" component={Create} exact />
-          <Route path="/posts/:id" component={FullArticle} exact />
-          <Route path="/" component={Blog} exact />
-          <Redirect from="*" to="/" />
-        </Switch>
+
+        <Route
+          render={({ location }) => (
+            <TransitionGroup>
+              <CSSTransition key={location.key} timeout={450} classNames="fade">
+                <Switch location={location}>
+                  <Route path="/posts/:id/edit" component={Edit} exact />
+                  <Route path="/posts/create" component={Create} exact />
+                  <Route path="/posts/:id" component={FullArticle} exact />
+                  <Route path="/" component={Blog} exact />
+                  <Redirect from="*" to="/" />
+                </Switch>
+              </CSSTransition>
+            </TransitionGroup>
+          )}
+        />
         <Modal />
         <Foot />
       </main>

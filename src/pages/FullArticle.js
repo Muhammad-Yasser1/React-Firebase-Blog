@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getArticles } from "../store/actions/articlesActions";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 const FullArticle = props => {
   const [article, setArticle] = useState({
@@ -13,6 +15,7 @@ const FullArticle = props => {
   });
 
   useEffect(() => {
+    NProgress.start();
     if (!props.articles.length) {
       props.getArticles();
     } else {
@@ -35,7 +38,7 @@ const FullArticle = props => {
       updated_at,
       title
     });
-    //eslint-disable-next-line
+    NProgress.done(); //eslint-disable-next-line
   }, [props.articles, props.match.params.id, props.editMode]);
 
   return (

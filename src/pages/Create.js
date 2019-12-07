@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createArticle, getArticles } from "../store/actions/articlesActions";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 const Create = props => {
   const [state, setState] = useState({
@@ -13,10 +15,11 @@ const Create = props => {
   });
 
   useEffect(() => {
+    NProgress.start();
     if (!props.articles.length) {
       props.getArticles();
     }
-    //eslint-disable-next-line
+    NProgress.done(); //eslint-disable-next-line
   }, []);
 
   const Create = e => {

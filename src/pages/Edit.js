@@ -5,6 +5,8 @@ import {
   getArticles,
   deleteArticle
 } from "../store/actions/articlesActions";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 const Edit = props => {
   const [article, setArticle] = useState({
@@ -17,6 +19,7 @@ const Edit = props => {
   });
 
   useEffect(() => {
+    NProgress.start();
     if (!props.match.params.id) {
       return props.history.push("/");
     }
@@ -42,7 +45,7 @@ const Edit = props => {
       image,
       title
     });
-    //eslint-disable-next-line
+    NProgress.done(); //eslint-disable-next-line
   }, [props.articles, props.match.params.id, props.editMode]);
 
   const EditArticle = e => {
