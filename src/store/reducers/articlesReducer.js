@@ -20,7 +20,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         articles: state.articles.map(article => {
-          if (article.id == payload.id) {
+          if (article.id === +payload.id) {
             payload.image = article.image;
             return payload;
           }
@@ -31,7 +31,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         articles: state.articles.filter(article => {
-          return article.id != payload;
+          return article.id !== +payload;
         })
       };
     default:
