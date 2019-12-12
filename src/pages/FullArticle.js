@@ -22,8 +22,8 @@ const FullArticle = props => {
       const checkIfArticleExists =
         props.articles.findIndex(
           article => article.id === +props.match.params.id
-        ) < 0;
-      if (checkIfArticleExists || props.editMode) {
+        ) > -1;
+      if (!checkIfArticleExists || props.editMode) {
         return props.history.push("/");
       }
     }
